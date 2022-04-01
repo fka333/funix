@@ -141,7 +141,7 @@ def class_score2(data, answer_list):
 # 5.4  
 def make_scores_file2(data, answer_list, filename):
     total_class_scores = class_score2(data, answer_list)
-    file_to_write = f'.\Data Files\{filename}_grades2.txt'
+    file_to_write = f'./Data Files/{filename}_grades2.txt'
 
     with open(file_to_write, 'w') as f:
         for student_score in total_class_scores:
@@ -162,7 +162,8 @@ def main(method):
     
     elif method == 'pandas':
         try:
-            df = pd.read_csv(f'.\Data Files\{filename}.txt', sep='\n', header=None)
+            df = pd.read_csv(f'./Data Files/{filename}.txt', sep='\r\n', header=None)
+            print(f"Successfully opened {filename}.txt")
             make_scores_file2(df, answer_list, filename)
         except:
             print('File cannot be found.')
